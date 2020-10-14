@@ -28,6 +28,21 @@ class Profile extends Component {
             email: '',
             transactions: []
         }
+        this.handleSignOut = this.handleSignOut.bind(this)
+    }
+    
+    handleSignOut() {
+        fetch('/api/logout', {
+            method: "GET"
+        })
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+           if ('success' in data) {
+               this.props.history.push('/')
+           }
+        })
     }
 
     componentDidMount() {
@@ -69,7 +84,7 @@ class Profile extends Component {
                     </HeaderName>
                     <HeaderNavigation>
                         <HeaderMenuItem href='/dashboard'>Dashboard</HeaderMenuItem>
-                        <HeaderMenuItem href='/'>Sign Out</HeaderMenuItem>
+                        <HeaderMenuItem onClick={this.handleSignOut}>Sign Out</HeaderMenuItem>
                         
                         {/* { this.state.links.map((link, index) => {
                             <HeaderMenuItem href={link.endpoint}>{link.name}</HeaderMenuItem>

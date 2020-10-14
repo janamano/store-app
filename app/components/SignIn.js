@@ -48,7 +48,7 @@ class SignIn extends Component {
                 if ('success' in data) {
                     this.props.history.push('/dashboard')
                 } else{
-                    // modal 
+                    // TODO modal shows login failure
                 }
                 
                 // console.log(data);

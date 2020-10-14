@@ -60,6 +60,7 @@ import Item from './Item.js'
             })
         })
         .then(() => {
+            // TODO: move this fetch call outside
             fetch('/api/getItems', {
                 method: 'GET'
             })

@@ -23,6 +23,21 @@ class Home extends Component {
 
     }
     componentDidMount() {
+        fetch('/api/getUser', {
+            method: "GET"
+        })
+        .then(res => {
+            return res.json()
+        })
+        .then(data => {
+            if (data.user) {
+                this.props.history.push('/dashboard')
+            }
+            // console.log(data.user)
+            // this.setState({
+            //     username: data.user
+            // })
+        })
 
         fetch('/api/getItems', {
             method: 'GET'
